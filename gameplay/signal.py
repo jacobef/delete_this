@@ -1,5 +1,3 @@
-from entities import being
-
 current_signals = set()
 
 class Signal:

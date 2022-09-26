@@ -1,3 +1,4 @@
+from entities.being import Being
 from entities.entity import Entity
 from gameplay.clock import clock
 from graphics.sprite import ProjectileSprite, EntitySprite
@@ -35,3 +36,19 @@ class Projectile(Entity):
             self.on_collide(entity_sprite.entity)
 
         super().tick()
+
+class PickupS(Projectile):
+    def __init__(self, name: str, duration: int, source: Entity, position: Vector2D, sprite: ProjectileSprite, initial_velocity: Vector2D, strength, *args, **kwargs):
+        self.strength = strength
+        super().__init__(name, duration, source, position, sprite, initial_velocity, *args, **kwargs)
+    def on_collide(self, target: Entity):
+        if isinstance(target, Being):
+            target.strength += self.strength
+class coffee(Projectile):
+    def __init__(self, name: str, duration: int, source: Entity, position: Vector2D, sprite: ProjectileSprite, initial_velocity: Vector2D, strength, *args, **kwargs):
+        self.strength = strength
+        super().__init__(name, duration, source, position, sprite, initial_velocity, *args, **kwargs)
+    def on_collide(self, target: Entity):
+        if isinstance(target, Being):
+            target.strength += self.strength
+            target.current_health += 1000

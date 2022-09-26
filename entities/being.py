@@ -119,8 +119,7 @@ class Being(Entity):
             self.spend_health(ability.health_cost)
             self.current_action = ability.as_action(self)
         elif self.current_action.name == ability.name:
-            # TODO change from print statements
-            print("dummie you are already doing that")
+            pass
         else:
             print("not enough stuff")
 
@@ -132,6 +131,7 @@ class Being(Entity):
         super().on_death()
         death_effect = EffectSprite("death_effect.png", self.sprite.scale, 1000)
         death_effect.start_effect(self.position.x, self.position.y)
+        print("Someone died. Probably not the player, though...")
 
     def tick(self):
         """Tick this being, handling its actions and continuously called functions.

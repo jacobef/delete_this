@@ -11,7 +11,7 @@ class Player(Being):
     """The player of the game. There should only be one of these (for now)."""
     def __init__ (self, position: Vector2D, current_action=nothing_action, *args, **kwargs):
         self.ability_slots = [ability.empty_slot, ability.empty_slot,
-                              ability.punch, ability.empty_slot]
+                              ability.player_punch, ability.shoo]
 
         super().__init__(name="Player", position=position,
                          sprite=EntitySprite(img_path="captain_alex.png", scale=[40, 80]),
